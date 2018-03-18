@@ -7,81 +7,86 @@
 // James Parker, Jessica Parker, Kritsia Figueroa
 
 package introverts;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import javax.swing.*;
 
 public class AdminWindow extends Frame
  {
  
- private JFrame f;
- private JLabel title;
- 
+
     public AdminWindow ()
     {
-     
-    	f = new JFrame("Admin Mode");
-    	f.setSize(800, 600);
-    	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       
-    	JPanel jp = new JPanel();
-    	f.add(jp);
-    	jp.setLayout(new BorderLayout());
-    	
-    	title = new JLabel("Search Engine - Administrator", JLabel.CENTER);
-    	title.setFont(new Font("Tahoma", Font.BOLD, 30));
-    	title.setAlignmentX(0);
-    	title.setAlignmentY(0);
-    	jp.add(title,BorderLayout.NORTH);
-    		
+
+        JFrame f;
+        f = new JFrame ("Search Engine Maintenance");
+       	f.setSize (800, 600);
+     	f.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    	       
+    	JPanel jp = new JPanel ();
+    	f.add (jp);
+       	jp.setLayout (new BorderLayout () );
+    	    	
+    	JLabel title;
+     	title = new JLabel ("Search Engine - Index Maintenance", JLabel.CENTER);
+     	title.setFont (new Font ("SansSerif", Font.BOLD, 25) );
+     	title.setAlignmentX (0);
+    	title.setAlignmentY (0);
+    	jp.add (title,BorderLayout.NORTH);
+    	    		
     	//JTable where files and status will show up
     	String[] columns = {"File Name", "Status"};
-    	String[][] data = {  
-    		{"File1.txt", "Open"},
-    		{"File2.txt", "Closed"},
-    		{"File3.txt", "Closed"}
-    		};
-    
-    	JTable jt = new JTable(data, columns);
-    	jt.setPreferredScrollableViewportSize(new Dimension(400,63));
-    	jt.setFillsViewportHeight(true);
-    	
+    	Object[][] data = {  
+    	    		      };
+    	    
+    	JTable jt = new JTable (data, columns);
+    	jt.setPreferredScrollableViewportSize (new Dimension(400,63));
+    	jt.setFillsViewportHeight (true);
+    	    	
     	//Scroll pane to scroll through results
-    	JScrollPane jps = new JScrollPane(jt);
-    	jp.add(jps, BorderLayout.CENTER);
-    
+    	JScrollPane jps = new JScrollPane (jt);
+    	jp.add (jps, BorderLayout.CENTER);
+    	    
     	JPanel p = new JPanel(new GridBagLayout());
-    	
+    	    	
     	//Buttons to add, remove, and update files
-    	JButton addFiles = new JButton("Add Files");
-    	JButton removeFiles = new JButton("Remove Files");
-    	JButton updateFiles = new JButton("Update Files");
-       
+    	JButton addFiles = new JButton ("Add Files");
+    	JButton removeFiles = new JButton ("Remove Selected Files");
+    	JButton updateFiles = new JButton ("Update Files");
+    	JButton resetWindows = new JButton ("Reset Window");
+    	
+    	JLabel numFiles = new JLabel ("Number of files indexed: ");
+    	JLabel currVersion = new JLabel ("Search Engine Version");
+    	
     	GridBagConstraints c = new GridBagConstraints();
-       
+    	       
     	//Button location and spacing
-    	c.insets = new Insets(60,60,60,60);
+    	c.insets = new Insets (30,30,10,30);
     	c.gridx = 1;
     	c.gridy = 0;
-    	p.add(addFiles, c);
-       
+    	p.add (addFiles, c);
+    	       
     	c.gridx = 2;
     	c.gridy = 0;
-    	p.add(removeFiles, c);
-       
+    	p.add (removeFiles, c);
+    	       
     	c.gridx = 3;
     	c.gridy = 0;
-    	p.add(updateFiles, c);
- 
-    	jp.add(p, BorderLayout.SOUTH);
+    	p.add (updateFiles, c);
     	
-    	f.setVisible(true);  
+    	c.gridx = 1;
+    	c.gridy = 1;
+    	p.add (resetWindows, c);
+    	
+    	c.gridx = 2;
+    	c.gridy = 1;
+    	p.add (numFiles, c);
+    	
+    	c.gridx = 3;
+    	c.gridy = 1;
+    	p.add (currVersion, c);
+    	 
+    	jp.add (p, BorderLayout.SOUTH);
+    	    	
+    	f.setVisible (true); 
+      }
     }
- }
