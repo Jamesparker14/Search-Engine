@@ -8,6 +8,7 @@
 
 package introverts;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class AdminWindow extends Frame
@@ -34,8 +35,8 @@ public class AdminWindow extends Frame
     	jp.add (title,BorderLayout.NORTH);
     	    		
     	//JTable where files and status will show up
-    	String[] columns = {"File Name", "Status"};
-    	Object[][] data = {  
+    	String[] columns = {"File Name", "Pathname","Last Modified"};
+    	Object[][][] data = {  
     	    		      };
     	    
     	JTable jt = new JTable (data, columns);
@@ -54,8 +55,9 @@ public class AdminWindow extends Frame
     	JButton updateFiles = new JButton ("Update Files");
     	JButton resetWindows = new JButton ("Reset Window");
     	
+    	    	
     	JLabel numFiles = new JLabel ("Number of files indexed: ");
-    	JLabel currVersion = new JLabel ("Search Engine Version");
+    	JLabel currVersion = new JLabel ("Search Engine Version 1.0");
     	
     	GridBagConstraints c = new GridBagConstraints();
     	       
@@ -88,5 +90,24 @@ public class AdminWindow extends Frame
     	jp.add (p, BorderLayout.SOUTH);
     	    	
     	f.setVisible (true); 
+    	
+    	
+    	//Makes the button do something when you click it.
+    	addFiles.addActionListener(new ActionListener() {
+
+    		  public void actionPerformed(ActionEvent event) {
+    			  //add stuff here to make button work
+    		  }
+
+    		});
+    	updateFiles.addActionListener(new ActionListener() {
+
+    		  public void actionPerformed(ActionEvent event) {
+    		    //add stuff here to make button work
+    		  }
+
+    		});
       }
     }
+
+    
